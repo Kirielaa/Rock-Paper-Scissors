@@ -58,7 +58,7 @@ let lose = 0;
 function game() {
     for (let i = 0; i < 5; i++) {
         if (i < 5) {
-            let playerChoice = prompt("What is your choice? ", "rock");
+            let playerChoice = prompt("What is your choice: Rock, paper or scissors? ", "rock");
             playerChoice = playerChoice.toLowerCase();
             computerChoice = getComputerChoice();
             let result = (playRound(playerChoice, computerChoice));
