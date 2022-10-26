@@ -23,8 +23,6 @@ function getComputerChoice() {
 
 let computerChoice = getComputerChoice();
 
-// console.log(playerChoice);
-// console.log(computerChoice);
 
 // We're gonna play a round.
 
@@ -46,7 +44,7 @@ function playRound(playerChoice, computerChoice) {
 
 // console.log (playRound(playerChoice, computerChoice));
 
-//Next we're gonna make it more complex. We're gonna play 5 rounds.
+//We're gonna make it more complex. We're gonna play 5 rounds.
 
 
 let win = 0;
@@ -55,10 +53,11 @@ function game() {
     for (let i = 0; i < 5; i++) {
         if (i < 5) {
             let playerChoice = prompt("What is your choice: Rock, paper or scissors? ", "rock");
-            playerChoice = playerChoice.toLowerCase();
+            playerChoice = playerChoice.toLowerCase(); // way for the user to input his choice
             computerChoice = getComputerChoice();
             let result = (playRound(playerChoice, computerChoice));
             console.log(result);
+            alert(result);
             // make a function that keeps track of how many times you win/lose
             if (result.substr(0, 7) === "You win") {
                 win++;        
@@ -85,3 +84,4 @@ function finalResult() {
 }
 
 console.log(finalResult());
+alert(finalResult());
