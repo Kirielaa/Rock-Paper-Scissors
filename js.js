@@ -31,19 +31,15 @@ let computerChoice = getComputerChoice();
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
     return "It's a tie!"; // if both choices are the same, it's a tie
-} else if (playerChoice === "paper" && computerChoice === "rock") {
-    return "You win! Paper beats rock"; // It's a win (to the user) if: paper-rock, scissors-paper, rock-scissors.
-} else if (playerChoice === "paper" && computerChoice === "scissors") {
-    return "You lose! Paper loses to scissors";
-} else if (playerChoice === "rock" && computerChoice === "scissors") {
-    return "You win! Rock beats scissors"; // It's a win (to the user) if: paper-rock, scissors-paper, rock-scissors.
-} else if (playerChoice === "rock" && computerChoice === "paper") {
-    return "You lose. Rock loses to paper";
-} else if (playerChoice === "scissors" && computerChoice === "paper") {
-    return "You win! Scissors beats paper" // It's a win (to the user) if: paper-rock, scissors-paper, rock-scissors.
-} else if (playerChoice === "scissors" && computerChoice === "rock") {
-    return "You lose! Scissors loses to rock";
-} else {
+} else if (playerChoice === "paper" && computerChoice === "rock" || 
+        playerChoice === "rock" && computerChoice === "scissors" ||
+        playerChoice === "scissors" && computerChoice === "paper") {
+    return `You win! ${playerChoice} beats ${computerChoice}`; // It's a win (to the user) if: paper-rock, scissors-paper, rock-scissors.
+} else if (playerChoice === "paper" && computerChoice === "scissors" ||
+        playerChoice === "rock" && computerChoice === "paper" || 
+        playerChoice === "scissors" && computerChoice === "rock") {
+    return `You lose! ${playerChoice} loses to ${computerChoice}`;
+}  else {
     return alert("Pick rock, paper, or scissors please.");
 }
 }
@@ -69,8 +65,6 @@ function game() {
             } else if (result.substr(0, 8) === "You lose") {
                 lose++;
             }
-        } if (i === 4) {
-            finalResult();
         }
     }
 }
