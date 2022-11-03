@@ -67,7 +67,7 @@ h3 {
 .selected {
     transform: scale(1.2);
     border-color: chocolate;
-    transition: all 0.1s ease;
+    transition: all 0.2s ease;
     box-shadow: 0 0 1rem chocolate;
 }
 

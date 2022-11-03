@@ -19,6 +19,7 @@ let computerChoice = getComputerChoice();
 const score = document.querySelector('#score');
 const result = document.querySelector('#result');
 const buttons = document.querySelectorAll('.p-options');
+const cButtons = document.querySelectorAll('.c-options');
 
 score.textContent = `${win} - ${lose}`
 
@@ -35,12 +36,25 @@ buttons.forEach((button) => {
         playerChoice = button.textContent;
         computerChoice = getComputerChoice();
         playRound(playerChoice, computerChoice);
+        cChoice();
         finalResult();
-        console.log(playerChoice);
-        console.log(computerChoice);
+        // console.log(playerChoice);
+        // console.log(computerChoice);
     });
 });
 
+function rmvTransition() {
+    this.classList.remove('selected');
+}
+
+function cChoice() {cButtons.forEach ((e) => {
+    if (e.textContent === computerChoice) {
+       e.classList.add('selected');
+    }
+})
+}
+
+cButtons.forEach(button => button.addEventListener('transitionend', rmvTransition));
 
 // We're gonna play a round.
 
