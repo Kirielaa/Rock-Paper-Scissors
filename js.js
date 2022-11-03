@@ -18,37 +18,56 @@ let win = 0;
 let lose = 0;
 const score = document.querySelector('#score');
 const result = document.querySelector('#result');
+const buttons = document.querySelectorAll('.p-options');
 
 
 score.textContent = `${win} - ${lose}`
 // Then the computer is gonna output one of the same three choices.
 
 function getComputerChoice() {
-    const gameChoices = ["rock", "paper", "scissors"];
+    const gameChoices = ["archer", "knight", "spearman"];
     let choice = gameChoices[Math.floor(Math.random() * gameChoices.length)];
     return choice;
 }
 
+let playerChoice;
 let computerChoice = getComputerChoice();
+
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerChoice = button.textContent;
+        playerChoice = playerChoice.toLowerCase();
+        computerChoice = getComputerChoice();
+        playRound(playerChoice, computerChoice);
+        console.log(playerChoice);
+        console.log(computerChoice);
+    });
+});
+
+
+// buttons.forEach((button) => {
+//     button.addEventListener('click', (playRound(playerChoice, computerChoice)) );
+// });
 
 
 // We're gonna play a round.
 
-// function playRound(playerChoice, computerChoice) {
-//     if (playerChoice === computerChoice) {
-//     return "It's a tie!"; // if both choices are the same, it's a tie
-// } else if (playerChoice === "paper" && computerChoice === "rock" || 
-//         playerChoice === "rock" && computerChoice === "scissors" ||
-//         playerChoice === "scissors" && computerChoice === "paper") {
-//     return `You win! ${playerChoice} beats ${computerChoice}`; // It's a win (to the user) if: paper-rock, scissors-paper, rock-scissors.
-// } else if (playerChoice === "paper" && computerChoice === "scissors" ||
-//         playerChoice === "rock" && computerChoice === "paper" || 
-//         playerChoice === "scissors" && computerChoice === "rock") {
-//     return `You lose! ${playerChoice} loses to ${computerChoice}`;
-// }  else {
-//     return alert("Pick rock, paper, or scissors please.");
-// }
-// }
+function playRound(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) {
+    result.textContent = "It's a tie!"; // if both choices are the same, it's a tie
+} else if (playerChoice === "archer" && computerChoice === "spearman" || 
+        playerChoice === "knight" && computerChoice === "archer" ||
+        playerChoice === "spearman" && computerChoice === "knight") {
+    result.textContent = `You win! ${playerChoice} beats ${computerChoice}`; // It's a win (to the user) if: paper-rock, scissors-paper, rock-scissors.
+} else if (playerChoice === "archer" && computerChoice === "knight" ||
+        playerChoice === "knight" && computerChoice === "spearman" || 
+        playerChoice === "spearman" && computerChoice === "archer") {
+    result.textContent = `You lose! ${playerChoice} loses to ${computerChoice}`;
+}  else {
+    result.textContent = "Ops";
+}
+}
 
 // // console.log (playRound(playerChoice, computerChoice));
 
@@ -82,13 +101,13 @@ let computerChoice = getComputerChoice();
 
 // function finalResult() {
 //     if (win > lose) {
-//         return (`You're the winner, congratulations! You won ${win} times` );
+//         result.textContent = (`You're the winner, congratulations! You won ${win} times` );
 //     } else if (win < lose) {
-//         return `You lost ${lose} times, better luck next time :(`;
+//         result.textContent = `You lost ${lose} times, better luck next time :(`;
 //     } else if (win === lose) {
-//         return "It's a tie! So close. Better luck next time! :)";
+//         result.textContent = "It's a tie! So close. Better luck next time! :)";
 //     }
 // }
 
 // console.log(finalResult());
-// alert(finalResult());
+// // alert(finalResult());
