@@ -57,12 +57,12 @@ h3 {
     margin-top: 2rem;
 }
 
-.p-options:hover {
+/* .p-options:hover {
     transform: scale(1.2);
     border-color: chocolate;
     transition: all 0.1s ease;
     box-shadow: 0 0 1rem chocolate;
-}
+} */
 
 .selected {
     transform: scale(1.2);

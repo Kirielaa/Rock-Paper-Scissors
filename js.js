@@ -10,7 +10,7 @@
 
 
 
-
+/* -----------------------VARIABLES----------------- */
 
 let win = 0;
 let lose = 0;
@@ -18,12 +18,15 @@ let playerChoice;
 let computerChoice = getComputerChoice();
 const score = document.querySelector('#score');
 const result = document.querySelector('#result');
-const buttons = document.querySelectorAll('.p-options');
+const pButtons = document.querySelectorAll('.p-options');
 const cButtons = document.querySelectorAll('.c-options');
+const buttons = document.querySelectorAll('.btn');
 
 score.textContent = `${win} - ${lose}`
 
-// Then the computer is gonna output one of the same three choices.
+/* ------------------------------------------------------------------- */
+
+// Function to get the computer choice
 
 function getComputerChoice() {
     const gameChoices = ["Archer", "Knight", "Spearman"];
@@ -31,11 +34,12 @@ function getComputerChoice() {
     return choice;
 }
 
-buttons.forEach((button) => {
+pButtons.forEach((button) => {
     button.addEventListener('click', () => {
         playerChoice = button.textContent;
         computerChoice = getComputerChoice();
         playRound(playerChoice, computerChoice);
+        pChoice();
         cChoice();
         finalResult();
         // console.log(playerChoice);
@@ -46,6 +50,9 @@ buttons.forEach((button) => {
 function rmvTransition() {
     this.classList.remove('selected');
 }
+/* ------------------------------------------------------------------- */
+
+// Handles the computer transition
 
 function cChoice() {cButtons.forEach ((e) => {
     if (e.textContent === computerChoice) {
@@ -54,9 +61,17 @@ function cChoice() {cButtons.forEach ((e) => {
 })
 }
 
-cButtons.forEach(button => button.addEventListener('transitionend', rmvTransition));
+// Handles the player transition
+function pChoice() {pButtons.forEach ((e) => {
+    if (e.textContent === playerChoice) {
+       e.classList.add('selected');
+    }
+})
+}
 
-// We're gonna play a round.
+buttons.forEach(button => button.addEventListener('transitionend', rmvTransition)); // removes the transition
+
+/* ------------------------------------------------------------------- */
 
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
@@ -78,7 +93,7 @@ function playRound(playerChoice, computerChoice) {
 }
 }
 
-// At the end display the winner
+// Display if the user is the winner or the loser when win/loss counter gets to 5
 
 function finalResult() {
     if (win == 5 || lose == 5) {
