@@ -30,9 +30,6 @@ function getComputerChoice() {
     return choice;
 }
 
-
-
-
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playerChoice = button.textContent;
@@ -72,11 +69,17 @@ function playRound(playerChoice, computerChoice) {
 function finalResult() {
     if (win == 5 || lose == 5) {
         if (win > lose) {
-            result.textContent = (`You're the winner, congratulations! You won ${win} times` );
-    }   else if (win < lose) {
-        result.textContent = `You lost ${lose} times, better luck next time :(`; 
-}
-    }
+            result.textContent = (`You're the winner, congratulations! You won ${win} times. ALGARTALHOS É CARO` );
+            win = 0;
+            lose = 0;
+            score.textContent = `${win} - ${lose}`
+        }   else if (win < lose) {
+        result.textContent = `You lost ${lose} times, ALGARTALHOS É CARO :(`;
+        win = 0;
+        lose = 0;
+        score.textContent = `${win} - ${lose}` 
+        }
+    } 
 };
 
 // Outdated
