@@ -54,8 +54,14 @@ h3 {
 
 .btn {
     margin-top: 2rem;
+    transition: all .2 ease;
 }
 
+.selected {
+    transform: scale(1.2);
+    border-color: chocolate;
+    box-shadow: 0 0 1rem chocolate;
+}
 footer {
     display: flex;
     justify-content: space-evenly;
