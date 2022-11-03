@@ -8,47 +8,41 @@
 
 
 
-// First the user is gonna input one of three choices. We'll do this with a prompt.
-// let playerChoice = prompt("What is your choice? ", "rock");
-// playerChoice = playerChoice.toLowerCase();
+
 
 
 
 let win = 0;
 let lose = 0;
+let playerChoice;
+let computerChoice = getComputerChoice();
 const score = document.querySelector('#score');
 const result = document.querySelector('#result');
 const buttons = document.querySelectorAll('.p-options');
 
-
 score.textContent = `${win} - ${lose}`
+
 // Then the computer is gonna output one of the same three choices.
 
 function getComputerChoice() {
-    const gameChoices = ["archer", "knight", "spearman"];
+    const gameChoices = ["Archer", "Knight", "Spearman"];
     let choice = gameChoices[Math.floor(Math.random() * gameChoices.length)];
     return choice;
 }
 
-let playerChoice;
-let computerChoice = getComputerChoice();
+
 
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playerChoice = button.textContent;
-        playerChoice = playerChoice.toLowerCase();
         computerChoice = getComputerChoice();
         playRound(playerChoice, computerChoice);
+        finalResult();
         console.log(playerChoice);
         console.log(computerChoice);
     });
 });
-
-
-// buttons.forEach((button) => {
-//     button.addEventListener('click', (playRound(playerChoice, computerChoice)) );
-// });
 
 
 // We're gonna play a round.
@@ -56,22 +50,36 @@ buttons.forEach((button) => {
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
     result.textContent = "It's a tie!"; // if both choices are the same, it's a tie
-} else if (playerChoice === "archer" && computerChoice === "spearman" || 
-        playerChoice === "knight" && computerChoice === "archer" ||
-        playerChoice === "spearman" && computerChoice === "knight") {
+} else if (playerChoice === "Archer" && computerChoice === "Spearman" || 
+        playerChoice === "Knight" && computerChoice === "Archer" ||
+        playerChoice === "Spearman" && computerChoice === "Knight") {
     result.textContent = `You win! ${playerChoice} beats ${computerChoice}`; // It's a win (to the user) if: paper-rock, scissors-paper, rock-scissors.
-} else if (playerChoice === "archer" && computerChoice === "knight" ||
-        playerChoice === "knight" && computerChoice === "spearman" || 
-        playerChoice === "spearman" && computerChoice === "archer") {
+    win++;
+    score.textContent = `${win} - ${lose}`
+} else if (playerChoice === "Archer" && computerChoice === "Knight" ||
+        playerChoice === "Knight" && computerChoice === "Spearman" || 
+        playerChoice === "Spearman" && computerChoice === "Archer") {
     result.textContent = `You lose! ${playerChoice} loses to ${computerChoice}`;
+    lose++;
+    score.textContent = `${win} - ${lose}`
 }  else {
-    result.textContent = "Ops";
+    result.textContent = "Ops, I don't know how you got this result.";
 }
 }
 
-// // console.log (playRound(playerChoice, computerChoice));
+// At the end display the winner
 
-// //We're gonna make it more complex. We're gonna play 5 rounds.
+function finalResult() {
+    if (win == 5 || lose == 5) {
+        if (win > lose) {
+            result.textContent = (`You're the winner, congratulations! You won ${win} times` );
+    }   else if (win < lose) {
+        result.textContent = `You lost ${lose} times, better luck next time :(`; 
+}
+    }
+};
+
+// Outdated
 
 
 
@@ -94,20 +102,15 @@ function playRound(playerChoice, computerChoice) {
 //     }
 // }
 
+// First the user is gonna input one of three choices. We'll do this with a prompt.
+// let playerChoice = prompt("What is your choice? ", "rock");
+// playerChoice = playerChoice.toLowerCase();
+
 // game();
 
 
-// //At the end display the winner
 
-// function finalResult() {
-//     if (win > lose) {
-//         result.textContent = (`You're the winner, congratulations! You won ${win} times` );
-//     } else if (win < lose) {
-//         result.textContent = `You lost ${lose} times, better luck next time :(`;
-//     } else if (win === lose) {
-//         result.textContent = "It's a tie! So close. Better luck next time! :)";
-//     }
-// }
+    
 
 // console.log(finalResult());
 // // alert(finalResult());

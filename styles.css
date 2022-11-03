@@ -1,4 +1,5 @@
 body {
+    height: 100vh;
     margin: 0;
     padding: 0;
 }
@@ -54,15 +55,24 @@ h3 {
 
 .btn {
     margin-top: 2rem;
-    transition: all .2 ease;
+}
+
+.p-options:hover {
+    transform: scale(1.2);
+    border-color: chocolate;
+    transition: all 0.1s ease;
+    box-shadow: 0 0 1rem chocolate;
 }
 
 .selected {
     transform: scale(1.2);
     border-color: chocolate;
+    transition: all 0.1s ease;
     box-shadow: 0 0 1rem chocolate;
 }
+
 footer {
+    margin-top: 10rem;
     display: flex;
     justify-content: space-evenly;
 }
