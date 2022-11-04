@@ -98,12 +98,12 @@ function playRound(playerChoice, computerChoice) {
 function finalResult() {
     if (win == 5 || lose == 5) {
         if (win > lose) {
-            result.textContent = (`You're the winner, congratulations! You won ${win} times. ALGARTALHOS É CARO` );
+            result.textContent = `You're the winner, congratulations! You won ${win} times.`;
             win = 0;
             lose = 0;
             score.textContent = `${win} - ${lose}`
         }   else if (win < lose) {
-        result.textContent = `You lost ${lose} times, ALGARTALHOS É CARO :(`;
+        result.textContent = `You lost ${lose} times, you'll win next time!`;
         win = 0;
         lose = 0;
         score.textContent = `${win} - ${lose}` 
